@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 require('./vendor/autoload.php');
 require 'mailingvariables.php';
 
-function mailfunction($mail_reciever_email, $mail_reciever_name, $mail_msg, $attachment = false){
+function mailfunction($mail_reciever_email="md.abdullah.mehedi@gmail.com", $mail_reciever_name, $mail_msg, $attachment = false){
 
     $mail = new PHPMailer();
     $mail->isSMTP();
@@ -41,12 +41,12 @@ function mailfunction($mail_reciever_email, $mail_reciever_name, $mail_msg, $att
     }
     
     $mail->AltBody = 'This is a plain-text message body';
- 
-    if (!$mail->send()) {
-        return false;
-    } else {
-        return true;
-    }
+
+
+    $a=$mail->send();
+    if(!$a) echo 'Mailer Error: ' . $mail->ErrorInfo;
+    return $a;
+
 }
 
 ?>
