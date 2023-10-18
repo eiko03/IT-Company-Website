@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 require('./vendor/autoload.php');
 require 'mailingvariables.php';
 
-function mailfunction($mail_reciever_email="md.abdullah.mehedi@gmail.com", $mail_reciever_name, $mail_msg, $attachment = false){
+function mailfunction( $mail_reciever_name, $mail_msg, $attachment = false){
 
     $mail = new PHPMailer();
     $mail->isSMTP();
@@ -16,6 +16,9 @@ function mailfunction($mail_reciever_email="md.abdullah.mehedi@gmail.com", $mail
     $mail->Host = $GLOBALS['mail_host'];
 
     $mail->Port = $GLOBALS['mail_port'];
+
+    $mail_reciever_email = $GLOBALS['mail_reciever_email'];
+
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
